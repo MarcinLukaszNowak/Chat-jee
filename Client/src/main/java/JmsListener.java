@@ -22,8 +22,9 @@ public class JmsListener {
         var proxyFactory = new ProxyFactory();
         ConnectionFactory connectionFactory = proxyFactory.createProxy(CONNECTION_FACTORY_JNDI_NAME);
         Topic topic = proxyFactory.createProxy(MESSAGES_TOPIC_JNDI_NAME);
+        String correlationId = "xd";
         try (JMSContext jmsContext = connectionFactory.createContext();
-             JMSConsumer consumer = jmsContext.createConsumer(topic)
+             JMSConsumer consumer = jmsContext.createConsumer(topic, "JMSCorrelationID = '" + correlationId + "'");
         ) {
             consumer.setMessageListener(onMessage);
             new Scanner(System.in).next();

@@ -1,9 +1,6 @@
 import lombok.AllArgsConstructor;
 
-import javax.jms.ConnectionFactory;
-import javax.jms.JMSConsumer;
-import javax.jms.JMSContext;
-import javax.jms.Topic;
+import javax.jms.*;
 import java.util.Scanner;
 
 @AllArgsConstructor
@@ -18,7 +15,13 @@ public class MessageSender implements Runnable {
         while (true) {
             Scanner scanner = new Scanner(System.in);
             if (scanner.hasNextLine()) {
-                jmsContext.createProducer().send(topic, scanner.nextLine());
+                TextMessage textMessage = jmsContext.createTextMessage(scanner.nextLine());
+                try {
+                    textMessage.setJMSCorrelationID("xdd");
+                } catch (JMSException e) {
+                    e.printStackTrace();
+                }
+                jmsContext.createProducer().send(topic, textMessage);
             }
         }
     }
