@@ -25,7 +25,7 @@ public class Client {
             while (true) {
                 Scanner scanner = new Scanner(System.in);
                 if (scanner.hasNextLine()) {
-                    jmsContext.createProducer().send(topic, scanner.nextLine());
+                    jmsContext.createProducer().setJMSCorrelationID("xd").send(topic, scanner.nextLine());
                 }
             }
 

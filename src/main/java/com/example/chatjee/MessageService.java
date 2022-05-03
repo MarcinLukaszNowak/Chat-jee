@@ -4,10 +4,7 @@ import lombok.SneakyThrows;
 
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
-import javax.jms.ConnectionFactory;
-import javax.jms.JMSContext;
-import javax.jms.Message;
-import javax.jms.MessageListener;
+import javax.jms.*;
 
 @MessageDriven(activationConfig = {
         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"),
@@ -21,12 +18,18 @@ public class MessageService implements MessageListener {
         var text = message.getBody(String.class);
         System.out.println(text);
 
-        var proxyFactory = new ProxyFactory();
-        ConnectionFactory connectionFactory = proxyFactory.createProxy("jms/topic/Messages");
-        JMSContext jmsContext = connectionFactory.createContext();
-        jmsContext.createProducer().send(message.getJMSReplyTo(), "server: otrzymałem wiadomość");
+//        if ("newTopic".equals(text)) {
+//            ModelCon
+//        }
+
+//        var proxyFactory = new ProxyFactory();
+//        ConnectionFactory connectionFactory = proxyFactory.createProxy("jms/RemoteConnectionFactory");
+//        JMSContext jmsContext = connectionFactory.createContext();
+//        jmsContext.createProducer().send(message.getJMSReplyTo(), "server: otrzymałem wiadomość");
 
     }
+
+
 
 
 }
