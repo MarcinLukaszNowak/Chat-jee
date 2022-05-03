@@ -17,7 +17,7 @@ public class MessageSender implements Runnable {
             if (scanner.hasNextLine()) {
                 TextMessage textMessage = jmsContext.createTextMessage(scanner.nextLine());
                 try {
-                    textMessage.setJMSCorrelationID("xdd");
+                    textMessage.setJMSCorrelationID("xd");
                 } catch (JMSException e) {
                     e.printStackTrace();
                 }
