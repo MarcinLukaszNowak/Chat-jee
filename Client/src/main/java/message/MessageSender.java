@@ -14,7 +14,7 @@ public class MessageSender {
 
     public void sendMessage(ClientMessage clientMessage) {
         try {
-            TextMessage textMessage = jmsContext.createTextMessage(clientMessage.createMessageText());
+            TextMessage textMessage = jmsContext.createTextMessage(clientMessage.convertToText());
             textMessage.setJMSCorrelationID(clientMessage.getRoomId());
             jmsContext.createProducer().send(topic, textMessage);
         } catch (JMSException e) {

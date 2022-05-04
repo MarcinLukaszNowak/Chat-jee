@@ -9,12 +9,6 @@ public class HelloResource {
     @GET
     @Produces("text/plain")
     public String hello() {
-        SendMessage sendMessage = new SendMessage();
-        try {
-            sendMessage.go();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         return "Hello, World!";
     }
 

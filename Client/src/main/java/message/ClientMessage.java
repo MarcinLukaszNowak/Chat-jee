@@ -11,8 +11,8 @@ public class ClientMessage {
     private String senderName;
     private String message;
 
-    public String createMessageText() {
-        return "[" + senderName + "]: " + message;
+    public String convertToText() {
+        return senderName + ": " + message;
     }
 
 }
