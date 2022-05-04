@@ -1,4 +1,5 @@
 import command.Command;
+import configuration.Conf;
 import logger.Logg;
 import lombok.AllArgsConstructor;
 import client.Client;
@@ -42,12 +43,10 @@ public class ConsoleMessageHandler implements Runnable {
         String param = commandAndParam.getVal2();
         if (Command.HELP.equalsCommand(command)) {
             Logg.info(Command.getAllCommands());
-        } else if (Command.NEW_ROOM.equalsCommand(command)) {
-//            this.server.newRoom(param);
         } else if (Command.JOIN_ROOM.equalsCommand(command)) {
             joinRoom(param);
-        } else if (Command.ROOM_LIST.equalsCommand(command)) {
-//            sendRoomList();
+        } else if (Command.JOIN_MAIN_ROOM.equalsCommand(command)) {
+            joinRoom(Conf.MAIN_ROOM);
         } else if (Command.LEAVE_CHAT.equalsCommand(command)) {
 //            leaveChat();
         } else if (Command.AVAILABLE_FILES.equalsCommand(command)) {
@@ -58,7 +57,6 @@ public class ConsoleMessageHandler implements Runnable {
     }
 
     private void joinRoom(String param) {
-        // todo sprawdź, czy pokój istnieje: jak nie to to wywal takie info i nie rób poniższego
         client.setRoomId(param);
         messageReceiver.updateRoomId();
         Logg.info("Welcome in '" + param + "' room!");

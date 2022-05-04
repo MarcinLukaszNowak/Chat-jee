@@ -9,9 +9,8 @@ import java.util.stream.Collectors;
 public enum Command {
     HELP( "help", "", "get all commands"),
     LEAVE_CHAT("q", "", "leave the chat"),
-    NEW_ROOM("new_room", "roomName", "create new room named roomName"),
-    ROOM_LIST("room_list", "", "list of rooms"),
     JOIN_ROOM("join_room", "roomId", "join to room with id = roomId"),
+    JOIN_MAIN_ROOM("join_room", "", "join to main room"),
     SEND_FILE("send_file", "filePath", "send file which path = filePath"),
     DOWNLOAD_FILE("download_file", "fileName", "download file with name = fileName"),
     AVAILABLE_FILES("available_files", "", "list of files available to download");
@@ -53,7 +52,7 @@ public enum Command {
     }
 
     public static String getAllCommands() {
-        return "Availble commands: \n" + Arrays.stream(Command.values())
+        return "Available commands: \n" + Arrays.stream(Command.values())
                 .map(v -> v + "\n")
                 .collect(Collectors.joining());
     }

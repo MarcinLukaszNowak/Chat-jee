@@ -16,6 +16,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
+          <factory-entry name="Chat" />
           <factory-entry name="default" />
         </datasource-mapping>
         <naming-strategy-map />
@@ -62,9 +63,7 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.sun.istack:istack-commons-runtime:4.0.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: jakarta.inject:jakarta.inject-api:2.0.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.antlr:antlr4-runtime:4.9.1" level="project" />
-    <orderEntry type="library" name="Maven: com.h2database:h2:2.1.212" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.persistence:eclipselink:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.hsqldb:hsqldb:2.5.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.persistence:javax.persistence-api:2.2" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.29" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.19.4" level="project" />

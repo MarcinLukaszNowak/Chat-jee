@@ -1,5 +1,7 @@
 import client.Client;
+import configuration.Conf;
 import connection.ServerConnector;
+import logger.Logg;
 import message.MessageReceiver;
 
 import java.util.Scanner;
@@ -7,12 +9,13 @@ import java.util.Scanner;
 public class ClientApp {
 
     public static void main(String[] args) {
-        System.out.println("Type your name: ");
+        Logg.info("Type your name: ");
         Scanner scanner = new Scanner(System.in);
 
         Client client = new Client(scanner.nextLine());
-        System.out.println("Hello: " + client.getName() + "!");
-        client.setRoomId("xd"); // todo
+        Logg.info("Hello: " + client.getName() + "!");
+        client.setRoomId(Conf.MAIN_ROOM);
+        Logg.info("Joined room: " + Conf.MAIN_ROOM);
 
         ServerConnector serverConnector = new ServerConnector();
         boolean connected = serverConnector.connectWithServer();
