@@ -4,16 +4,17 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table
+//@Table
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ClientMessage {
 
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column
     private String roomId;
@@ -24,10 +25,10 @@ public class ClientMessage {
     @Column
     private String text;
 
-    @Column // todo string zamienić na date
-    private String sendDate;
+    @Column
+    private Date sendDate;
 
-    public ClientMessage(String roomId, String userName, String text, String sendDate) {
+    public ClientMessage(String roomId, String userName, String text, Date sendDate) {
         this.roomId = roomId;
         this.userName = userName;
         this.text = text;

@@ -5,6 +5,7 @@
              version="2.2">
     <persistence-unit name="Chat" transaction-type="RESOURCE_LOCAL">
         <class>com.example.chatjee.domain.ClientMessage</class>
+        <class>com.example.chatjee.domain.Room</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/chat"/>
             <property name="javax.persistence.jdbc.user" value="root"/>

@@ -1,4 +1,4 @@
-package com.example.chatjee;
+package com.example.chatjee.jms;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
