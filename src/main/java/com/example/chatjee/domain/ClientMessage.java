@@ -1,9 +1,11 @@
 package com.example.chatjee.domain;
 
+import com.example.chatjee.dto.ClientMessageDto;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -35,6 +37,14 @@ public class ClientMessage {
         this.sendDate = sendDate;
     }
 
-
+    public ClientMessageDto toDto() {
+        ClientMessageDto clientMessageDto =  new ClientMessageDto();
+        clientMessageDto.setRoomId(this.roomId);
+        clientMessageDto.setUserName(this.userName);
+        clientMessageDto.setText(this.text);
+        String date = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(this.sendDate);
+        clientMessageDto.setSendDate(date);
+        return clientMessageDto;
+    }
 
 }
