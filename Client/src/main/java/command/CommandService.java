@@ -4,7 +4,6 @@ import client.Client;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import logger.Logg;
-import lombok.SneakyThrows;
 import message.MessageReceiver;
 import org.jboss.resteasy.client.jaxrs.internal.ResteasyClientBuilderImpl;
 
@@ -47,6 +46,14 @@ public class CommandService {
         } catch (Exception e) {
             Logg.error("Download failed. Probably no such file.");
         }
+    }
+
+    public void printFileList(String roomId) {
+        var restClient = new ResteasyClientBuilderImpl().build();
+        var fileList = restClient.target(BASE_SERVER_URL + FILE_PART_URL + "/" + roomId)
+                .request()
+                .get(String.class);
+        Logg.info(fileList);
     }
 
 }

@@ -1,23 +1,15 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import command.Command;
 import command.CommandService;
 import configuration.Conf;
 import logger.Logg;
-import lombok.*;
 import client.Client;
 import message.ClientMessage;
 import message.MessageReceiver;
 import message.MessageSender;
-import org.jboss.resteasy.client.jaxrs.internal.ResteasyClientBuilderImpl;
 import org.jgroups.util.Tuple;
 
-import javax.inject.Inject;
 import javax.jms.JMSContext;
 import javax.jms.Topic;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.util.Scanner;
 
 public class ConsoleMessageHandler implements Runnable {
@@ -67,6 +59,8 @@ public class ConsoleMessageHandler implements Runnable {
             commandService.printRoomHistory(client.getRoomId());
         } else if (Command.DOWNLOAD_FILE.equalsCommand(command)) {
             commandService.downloadFile(client.getRoomId(), param);
+        } else if (Command.AVAILABLE_FILES.equalsCommand(command)) {
+            commandService.printFileList(client.getRoomId());
         } else {
             Logg.warn("command: '" + commandAndParam.getVal1() + "' doesn't exist. Type '" + Command.HELP.getCommandString() + "' to get list of commands");
         }

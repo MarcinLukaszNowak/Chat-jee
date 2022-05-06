@@ -12,6 +12,7 @@ public enum Command {
     JOIN_ROOM("join_room", "roomId", "join to room with id = roomId"),
     JOIN_MAIN_ROOM("join_room", "", "join to main room"),
     ROOM_HISTORY("room_history", "", "get history from current room"),
+    AVAILABLE_FILES("file_list", "", "get list of files available to download"),
     SEND_FILE("send_file", "filePath", "send file which path = filePath"),
     DOWNLOAD_FILE("download_file", "fileName", "download file with name = fileName"),
     TEST("test", "", "test");
