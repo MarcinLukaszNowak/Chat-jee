@@ -14,7 +14,7 @@ public enum Command {
     ROOM_HISTORY("room_history", "", "get history from current room"),
     SEND_FILE("send_file", "filePath", "send file which path = filePath"),
     DOWNLOAD_FILE("download_file", "fileName", "download file with name = fileName"),
-    AVAILABLE_FILES("available_files", "", "list of files available to download");
+    TEST("test", "", "test");
 
     private static final String COMMAND_IDENTIFIER = "**";
 
