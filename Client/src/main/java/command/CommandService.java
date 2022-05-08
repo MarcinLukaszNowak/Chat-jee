@@ -56,8 +56,10 @@ public class CommandService {
             fileInputStream.read(fileBytes, 0, fileBytes.length);
 
             var restClient = new ResteasyClientBuilderImpl().build();
-            var response = restClient.target(BASE_SERVER_URL  + FILE_PART_URL + "/" + roomId + "/" + getFileName(fileFullPath))
+            var response = restClient.target(BASE_SERVER_URL  + FILE_PART_URL + "/" + roomId)
+                    .queryParam("fileName", getFileName(fileFullPath))
                     .request()
+                    .header("Content-Length", 0)
                     .post(Entity.entity(fileInputStream, MediaType.APPLICATION_OCTET_STREAM));
             Logg.info("File downloaded.");
         } catch (FileNotFoundException e) {
@@ -77,7 +79,7 @@ public class CommandService {
 
     private static String getFileName(String file) {
         if (file.contains("\\")) {
-            return file.substring(file.lastIndexOf("\\"));
+            return file.substring(file.lastIndexOf("\\") + 1);
         }
         return file;
     }
