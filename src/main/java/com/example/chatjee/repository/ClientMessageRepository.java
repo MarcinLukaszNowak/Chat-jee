@@ -6,6 +6,7 @@ import com.example.chatjee.jms.ChatEntityManagerFactory;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.List;
 
 @ApplicationScoped
@@ -23,9 +24,9 @@ public class ClientMessageRepository {
     }
 
     public List<ClientMessage> findMessagesByRoomId(String roomId) {
-//        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return entityManager.createQuery("select m from ClientMessage m", ClientMessage.class).getResultList();
-//        entityManager.close();
+        Query query = entityManager.createQuery("select m from ClientMessage m where m.roomId = :roomId", ClientMessage.class);
+        query.setParameter("roomId", roomId);
+        return query.getResultList();
     }
 
 }

@@ -8,7 +8,6 @@ import java.util.Properties;
 public class ProxyFactory {
 
     private static final String INITIAL_CONTEXT_FACTORY = "org.wildfly.naming.client.WildFlyInitialContextFactory";
-//    private static final String INITIAL_CONTEXT_FACTORY = "org.jboss.naming.remote.client.InitialContextFactory";
     private static final String PROVIDER_URL = "http-remoting://localhost:8080";
     private static final String CLIENT_EJB_CONTEXT = "jboss.naming.client.ejb.context";
 

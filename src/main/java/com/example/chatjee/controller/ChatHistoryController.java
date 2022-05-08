@@ -2,11 +2,9 @@ package com.example.chatjee.controller;
 
 import com.example.chatjee.domain.ClientMessage;
 import com.example.chatjee.dto.ClientMessageDto;
-import com.example.chatjee.service.ClientMessageService;
-import lombok.Getter;
+import com.example.chatjee.service.ClientMessageServiceImpl;
 
 import javax.inject.Inject;
-import javax.print.attribute.standard.Media;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -19,7 +17,7 @@ import java.util.List;
 public class ChatHistoryController {
 
     @Inject
-    private ClientMessageService clientMessageService;
+    private ClientMessageServiceImpl clientMessageService;
 
     @GET
     @Path("{roomId}")

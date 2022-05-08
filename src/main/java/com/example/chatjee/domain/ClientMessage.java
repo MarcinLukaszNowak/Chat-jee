@@ -7,10 +7,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.UUID;
 
 @Entity
-//@Table
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ClientMessage {
 

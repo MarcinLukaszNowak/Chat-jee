@@ -1,5 +1,5 @@
 import command.Command;
-import command.CommandService;
+import command.CommandServiceImpl;
 import configuration.Conf;
 import logger.Logg;
 import client.Client;
@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class ConsoleMessageHandler implements Runnable {
 
-    private CommandService  commandService = new CommandService();
+    private CommandServiceImpl commandService = new CommandServiceImpl();
 
     private Client client;
     private JMSContext jmsContext;
@@ -67,11 +67,5 @@ public class ConsoleMessageHandler implements Runnable {
             Logg.warn("command: '" + commandAndParam.getVal1() + "' doesn't exist. Type '" + Command.HELP.getCommandString() + "' to get list of commands");
         }
     }
-
-
-
-
-
-
 
 }

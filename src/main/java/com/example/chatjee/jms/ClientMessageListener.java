@@ -1,7 +1,7 @@
 package com.example.chatjee.jms;
 
 import com.example.chatjee.domain.ClientMessage;
-import com.example.chatjee.service.ClientMessageService;
+import com.example.chatjee.service.ClientMessageServiceImpl;
 import lombok.SneakyThrows;
 
 import javax.ejb.ActivationConfigProperty;
@@ -18,7 +18,7 @@ import java.util.Date;
 public class ClientMessageListener implements MessageListener {
 
     @Inject
-    private ClientMessageService clientMessageService = new ClientMessageService();
+    private ClientMessageServiceImpl clientMessageService = new ClientMessageServiceImpl();
 
     @SneakyThrows
     @Override
