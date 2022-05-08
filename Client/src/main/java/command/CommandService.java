@@ -7,9 +7,9 @@ import logger.Logg;
 import message.MessageReceiver;
 import org.jboss.resteasy.client.jaxrs.internal.ResteasyClientBuilderImpl;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.core.MediaType;
+import java.io.*;
 
 public class CommandService {
 
@@ -48,12 +48,38 @@ public class CommandService {
         }
     }
 
+    public void sendFile(String roomId, String fileFullPath) {
+        fileFullPath = "D:\\java\\Lufthansa\\Chat-jee\\x.txt"; // todo to del
+        File file = new File(fileFullPath);
+        try (InputStream fileInputStream = new FileInputStream(file)) {
+            byte[] fileBytes = new byte[(int) file.length()];
+            fileInputStream.read(fileBytes, 0, fileBytes.length);
+
+            var restClient = new ResteasyClientBuilderImpl().build();
+            var response = restClient.target(BASE_SERVER_URL  + FILE_PART_URL + "/" + roomId + "/" + getFileName(fileFullPath))
+                    .request()
+                    .post(Entity.entity(fileInputStream, MediaType.APPLICATION_OCTET_STREAM));
+            Logg.info("File downloaded.");
+        } catch (FileNotFoundException e) {
+            Logg.error("File not found.");
+        } catch (IOException e) {
+            Logg.error("Error while sending file.");
+        }
+    }
+
     public void printFileList(String roomId) {
         var restClient = new ResteasyClientBuilderImpl().build();
         var fileList = restClient.target(BASE_SERVER_URL + FILE_PART_URL + "/" + roomId)
                 .request()
                 .get(String.class);
         Logg.info(fileList);
+    }
+
+    private static String getFileName(String file) {
+        if (file.contains("\\")) {
+            return file.substring(file.lastIndexOf("\\"));
+        }
+        return file;
     }
 
 }

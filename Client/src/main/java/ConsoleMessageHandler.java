@@ -59,6 +59,8 @@ public class ConsoleMessageHandler implements Runnable {
             commandService.printRoomHistory(client.getRoomId());
         } else if (Command.DOWNLOAD_FILE.equalsCommand(command)) {
             commandService.downloadFile(client.getRoomId(), param);
+        }  else if (Command.SEND_FILE.equalsCommand(command)) {
+            commandService.sendFile(client.getRoomId(), param);
         } else if (Command.AVAILABLE_FILES.equalsCommand(command)) {
             commandService.printFileList(client.getRoomId());
         } else {
